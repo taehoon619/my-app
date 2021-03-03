@@ -1,32 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Content from "./Content.js";
 
 
-class App extends React.Component {
-  state = {
-    query: ""
-  };
-  render() {
-    return (
-      <Container query={this.state.query}>
-        <Input
-          placeholder="테마를 입력하세요"
-          onKeyPress={this.handleInputKeyPress}
-        />
-        <Content />
-      </Container>
-    );
-  }
+const App = () => {
+  const [count, setCount] = useState('')
 
-  handleInputKeyPress = event => {
+  const handleInputKeyPress = (event) => {
     if (event.key === "Enter") {
-      this.setState({
+      setCount ({
         query: event.target.value
       });
       event.target.value = "";
     }
   };
+  
+  return (
+    <Container query={count}>
+      <Input
+        placeholder="테마를 입력하세요"
+        onKeyPress={handleInputKeyPress}
+      />
+      <Content />
+    </Container>
+  );
 }
 
 const Container = styled.div`
