@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 class Clock extends React.Component {
@@ -37,7 +37,7 @@ class Clock extends React.Component {
       </Container>
     );
   }
-  
+
   getDate = () => {
     this.setState({
       date: new Date()
